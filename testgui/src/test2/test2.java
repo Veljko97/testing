@@ -50,7 +50,7 @@ public class test2 {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JCheckBox chckbxHi = new JCheckBox("hi");
+		JCheckBox chckbxHi = new JCheckBox("hai");
 		
 		JProgressBar progressBar = new JProgressBar();
 		
