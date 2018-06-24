@@ -56,7 +56,7 @@ public class test {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton button = new JButton("Exit1");
+		JButton button = new JButton("Exit1a");
 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
