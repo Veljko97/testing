@@ -7,6 +7,8 @@ import javax.swing.JRadioButton;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagLayout;
+import java.awt.Window.Type;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -15,6 +17,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.event.ActionEvent;
 import javax.swing.Box;
 import javax.swing.AbstractAction;
@@ -47,7 +51,7 @@ public class test {
 	public test() {
 		initialize();
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -55,8 +59,9 @@ public class test {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setType(Type.NORMAL);
 		
-		JButton button = new JButton("Exit1a");
+		JButton button = new JButton("Exit");
 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -78,6 +83,23 @@ public class test {
 				
 			}
 		});
+		
+		JButton btnTest = new JButton("test");
+		btnTest.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LogIn dialog = new LogIn();
+				boolean tet = true;
+				tet = dialog.returnVal();
+				System.out.println(tet);
+				if(tet) {
+					comboBox.addItem("a");
+				}
+			}
+		});
+		
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -86,7 +108,9 @@ public class test {
 					.addComponent(verticalBox, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(325, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(266, Short.MAX_VALUE)
+					.addContainerGap(149, Short.MAX_VALUE)
+					.addComponent(btnTest)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(button)
 					.addGap(135))
 				.addGroup(groupLayout.createSequentialGroup()
@@ -97,12 +121,14 @@ public class test {
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(42, Short.MAX_VALUE)
+					.addContainerGap(28, Short.MAX_VALUE)
 					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(verticalBox, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(button)
+						.addComponent(btnTest))
 					.addGap(90))
 		);
 		
