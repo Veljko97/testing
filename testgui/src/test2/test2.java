@@ -10,6 +10,10 @@ import java.awt.GridBagConstraints;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Panel;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.JCheckBox;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -21,8 +25,15 @@ public class test2 {
 
 	/**
 	 * Launch the application.
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		File ff = new File("");
+		String ss = ff.getAbsolutePath();
+		ss = ss.substring(0,ss.lastIndexOf('\\'));
+		System.out.println(ss);
+		ff  = new File(ss+"\\data+\\sa");
+		ff.mkdir();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
