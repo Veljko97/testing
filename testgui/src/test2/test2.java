@@ -30,10 +30,13 @@ public class test2 {
 	public static void main(String[] args) throws IOException {
 		File ff = new File("");
 		String ss = ff.getAbsolutePath();
-		ss = ss.substring(0,ss.lastIndexOf('\\'));
-		System.out.println(ss);
-		ff  = new File(ss+"\\data+\\sa");
-		ff.mkdir();
+		//ss = ss.substring(0,ss.lastIndexOf('\\'));
+		//System.out.println(ss);
+		ff  = new File(ss+"\\sa\\fa");
+		boolean tr = ff.mkdir();
+		ff  = new File(ss+"\\sa\\fa\\tet1.txt");
+		ff.createNewFile();
+		System.out.println(tr);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
